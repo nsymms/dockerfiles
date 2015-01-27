@@ -1,0 +1,13 @@
+[Unit]
+Description=Samba container
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=10
+ExecStartPre=-/usr/bin/docker rm samba_run
+ExecStart=/usr/bin/docker run -d --name samba_run -p 445:445 -v /srv/media:/share --name samba_run samba -s "TV Shows:/share/TV\ Shows:rw:-public" -s "Movies:/share/Movies:rw:-public" -s "Other:/share/Other:rw:-public" -s "Music Vids:/share/Music\ Vids:rw:-public"
+ExecStop=/usr/bin/docker stop samba_run
+
+[Install]
+WantedBy=multi-user.target
