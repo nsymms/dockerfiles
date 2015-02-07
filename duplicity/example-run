@@ -1,0 +1,3 @@
+docker run -i -t -v /srv/media/backup-cache:/cache -v /srv/media/TV\ Shows/:/data duplicity \
+	--hidden-encrypt-key D5A2ED5A  --allow-source-mismatch --include "/data/black*" \
+	--exclude "/data/*" --name vidz /data onedrive://Backups1

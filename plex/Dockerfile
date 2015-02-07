@@ -1,4 +1,5 @@
-FROM ubuntu:trusty
+FROM debian:wheezy
+## FROM ubuntu:trusty
 # Installs the plexmediaserver (plexpass version) from the .deb downloaded from Plex
 MAINTAINER Scott Hansen <firecat4153@gmail.com>
 
