@@ -52,6 +52,12 @@ file="/opt/odoo/etc/odoo.conf"
 if [ ! -f "$file" ]; then
     cp /opt/sources/odoo.conf /opt/odoo/etc/odoo.conf
     echo "Copy template as conf file"
+    # add our custom variables to the default config
+    cat >> /opt/odoo/etc/odoo.conf << EOF
+db_user = ${DB_USER:-pg}
+db_password = ${DB_PASS:-CHANGEMENOW}
+admin_passwd = ${ADMIN_PASS:-CHANGEMENOW}
+EOF
 fi
 chown -R odoo /opt/odoo
 echo "Running command..."
