@@ -8,13 +8,14 @@ RUN mkdir /cache && cd
 
 # Install packages required
 RUN apt-get update && \
-	apt-get install -y duply python-requests-oauthlib
+	apt-get install -y duply python-requests-oauthlib python-boto
 
 # clean up
 RUN apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-# Set the ENTRYPOINT.
-# The allow-source-mismatch option is required since each time we run
-# we're effectively on a different (virtual) host.
-ENTRYPOINT [ "/usr/local/bin/duplicity", "--archive-dir=/cache", "--allow-source-mismatch" ]
+# set the starting point
+ADD start.sh /start.sh
+RUN chmod +x /start.sh
+
+ENTRYPOINT ["/start.sh"]
