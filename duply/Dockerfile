@@ -1,10 +1,6 @@
 FROM debian:sid
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV HOME /cache
-
-# create the new HOME dir in case it isn't passed in (used to hold backup cache info)
-RUN mkdir /cache && cd
 
 # Install packages required
 RUN apt-get update && \
