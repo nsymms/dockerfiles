@@ -16,7 +16,7 @@ If you want to override the default HOME dir locations, there ways to do so as n
 
 ```
 docker run -d -v /opt/duply-configs:/etc/duply \
-        -v /opt/duplicati-cache:/duplicati-cache \
+        -v /opt/duplicity-cache:/duplicity-cache \
         -v /Backups/Apps:/Backups/Apps:ro \
-        duply apps-bak bkp --archive-dir=/duplicati-cache
+        nsymms/duply apps-bak bkp --archive-dir=/duplicity-cache
 ```
