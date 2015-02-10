@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Install packages required
 RUN apt-get update && \
-	apt-get install -y python-requests-oauthlib python-boto
+	apt-get install -y duplicity python-requests-oauthlib python-boto
 
 # clean up
 RUN apt-get autoremove -y && \
