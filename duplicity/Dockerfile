@@ -13,4 +13,4 @@ RUN apt-get autoremove -y && \
 # Set the ENTRYPOINT.
 # The allow-source-mismatch option is required since each time we run
 # we're effectively on a different (virtual) host.
-ENTRYPOINT [ "/usr/local/bin/duplicity", "--allow-source-mismatch" ]
+ENTRYPOINT [ "/usr/bin/duplicity", "--allow-source-mismatch" ]
