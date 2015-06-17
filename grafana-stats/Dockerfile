@@ -77,6 +77,17 @@ EXPOSE 2003
 #EXPOSE  8126
 
 
+# --------------------- #
+#  Expose Data Volumes  #
+# --------------------- #
+
+# InfluxDB data
+VOLUME /opt/influxdb/shared
+
+# Grafana data
+VOLUME /usr/share/grafana/data
+
+
 # -------- #
 #   Run!   #
 # -------- #

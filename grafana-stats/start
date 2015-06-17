@@ -2,9 +2,8 @@
 
 docker kill grafana-dashboard
 docker rm -v grafana-dashboard
-#truncate ./logs/* --size 0
 
-# This will keep the log files persistent locally
+# This will keep the supervisord log files persistent locally
 
 #docker run -d -v $(pwd)/logs:/var/log/supervisor -p 18125:8125/udp \
 #	-e VIRTUAL_HOST=stats.morrishathaway.com -e VIRTUAL_PORT=3000 \
@@ -12,6 +11,15 @@ docker rm -v grafana-dashboard
 #	--name grafana-dashboard nsymms/grafana-stats
 
 
+# THIS is for when we want a custom influxdb config...
+#
+#docker run -d -p 22503:2003/udp -e VIRTUAL_PORT=3000 \
+#	-v /opt/grafana/influxdb:/opt/influxdb/shared -v /opt/grafana/data:/usr/share/grafana/data \
+#	-e VIRTUAL_HOST=stats.morrishathaway.com -e CERT_NAME=morrishathaway \
+#	--name grafana-dashboard nsymms/grafana-stats
+
+
 docker run -d -p 22503:2003/udp -e VIRTUAL_PORT=3000 \
+	-v /opt/grafana/data:/usr/share/grafana/data \
 	-e VIRTUAL_HOST=stats.morrishathaway.com -e CERT_NAME=morrishathaway \
 	--name grafana-dashboard nsymms/grafana-stats
