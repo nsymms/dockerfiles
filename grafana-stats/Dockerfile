@@ -23,7 +23,7 @@ RUN     wget http://s3.amazonaws.com/influxdb/influxdb_latest_amd64.deb && \
 
 # Install Grafana
 ### MIGHT BE EASIER TO DOWNLOAD & EXTRACT .tar.gz FILE
-RUN     wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.0.2_amd64.deb && \
+RUN     wget https://grafanarel.s3.amazonaws.com/builds/grafana_2.5.0_amd64.deb && \
         dpkg -i grafana*.deb && \
         rm grafana*.deb
 
