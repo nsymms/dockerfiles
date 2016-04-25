@@ -94,6 +94,7 @@ EOH
 	if [[ "-public" = "$users" ]] ; then
 	  echo -n "(public) "
 	  echo "guest ok = yes" >> "$CONFIG_FILE"
+	  echo "force user = smbuser" >> "$CONFIG_FILE"
 	else
           echo -n "for users: "
           users=$(echo "$users" |tr "," " ")
