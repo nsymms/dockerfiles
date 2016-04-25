@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
 CONFIG_FILE="/etc/samba/smb.conf"
 
 initialized=`getent passwd |grep -c '^smbuser:'`
 set -e
 if [ $initialized = "0" ]; then
-  useradd smbuser -M
+  adduser smbuser -H -D
 
   cat >"$CONFIG_FILE" <<EOT
 [global]
@@ -67,16 +67,22 @@ EOH
         ;;
       u)
         echo -n "Add user "
-        IFS=: read username password <<<"$OPTARG"
+        #IFS=: read username password <<<"$OPTARG"
+	IFS=: read username password <<EOF
+$OPTARG
+EOF
         echo -n "'$username' "
-        useradd "$username" -M
+        adduser "$username" -H -D
         echo -n "with password '$password' "
         echo "$password" |tee - |smbpasswd -s -a "$username"
         echo "DONE"
         ;;
       s)
         echo -n "Add share "
-        IFS=: read sharename sharepath readwrite users <<<"$OPTARG"
+        #IFS=: read sharename sharepath readwrite users <<<"$OPTARG"
+        IFS=: read sharename sharepath readwrite users <<EOF
+$OPTARG
+EOF
         echo -n "'$sharename' "
         echo "[$sharename]" >>"$CONFIG_FILE"
         chown smbuser "$sharepath"
