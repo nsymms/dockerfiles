@@ -1,0 +1,1 @@
+docker run -it --name ftpd -p 3388:21 -p 30000-30009:30000-30009 -e PUBLICHOST=myst.catsoncrack.com stilliard/pure-ftpd /usr/sbin/pure-ftpd -e -C 15 -c 5 -M -j
