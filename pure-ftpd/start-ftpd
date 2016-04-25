@@ -1,1 +1,0 @@
-docker run -d -p 3388:21 -p 30000-30009:30000-30009 --name ftpd nsymms/pure-ftpd
