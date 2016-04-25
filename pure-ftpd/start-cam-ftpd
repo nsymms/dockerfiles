@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo Starting Container
+docker run -d -p 3388:21 -p 30000-30009:30000-30009 --name ftpd -v /srv/nvr:/var/lib/ftp nsymms/pure-ftpd
+echo Setting anonymous directory ownership
+sleep 5
+docker exec ftpd chown ftp: /var/lib/ftp
