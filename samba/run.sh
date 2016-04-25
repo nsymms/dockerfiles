@@ -17,8 +17,8 @@ create mask = 0664
 directory mask = 0775
 force create mode = 0664
 force directory mode = 0775
-# force user = smbuser
-# force group = smbuser
+#force user = smbuser
+#force group = smbuser
 obey pam restrictions = yes
 map to guest = bad user
 server role = standalone server
@@ -94,7 +94,9 @@ EOH
 	if [[ "-public" = "$users" ]] ; then
 	  echo -n "(public) "
 	  echo "guest ok = yes" >> "$CONFIG_FILE"
+	  echo "public = yes" >> "$CONFIG_FILE"
 	  echo "force user = smbuser" >> "$CONFIG_FILE"
+	  #echo "force group = smbgroup" >> "$CONFIG_FILE"
 	else
           echo -n "for users: "
           users=$(echo "$users" |tr "," " ")

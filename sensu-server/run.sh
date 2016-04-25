@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # if we have SSL certs provided, then use them
 if [ ! -z "$SSL_CERT" ];
 cat << EOF > /etc/sensu/config.json

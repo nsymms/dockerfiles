@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# edit the config file to substitute any pass-in variables
+sed -i -e "s/^admin_password.*/admin_passwd = ${ADMIN_PASS:-CHANGEMENOW}/" \
+      -e "s/^db_user =.*/db_user = ${DB_USER:-pg}/" \
+      -e "s/^db_password =.*/db_password = ${DB_PASS:-CHANGEMENOW}/" /opt/sources/odoo.conf
+
+exec /app/bin/boot $*
