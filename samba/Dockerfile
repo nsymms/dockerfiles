@@ -1,8 +1,6 @@
-FROM debian:jessie
+FROM alpine:latest
 
-ENV DEBIAN_FRONTEND noninteractive
-
-RUN apt-get update && apt-get install -y --no-install-recommends samba-common-bin samba
+RUN apk add --update samba
 
 ADD run.sh /run.sh
 RUN chmod u+x /run.sh
