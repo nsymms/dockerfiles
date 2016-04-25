@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN apk add --update samba
+RUN apk add --update samba samba-common-tools
 
 ADD run.sh /run.sh
 RUN chmod u+x /run.sh
