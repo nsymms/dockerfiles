@@ -124,4 +124,5 @@ EOF
 
 fi
 
-exec ionice -c 3 smbd -FS --configfile="$CONFIG_FILE"
+# NOTE: need to redirect stdin or smbd exits under alpine (don't know why)
+exec ionice -c 3 smbd -FS --configfile="$CONFIG_FILE" < /dev/null

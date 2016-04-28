@@ -4,9 +4,8 @@ FROM debian:wheezy
 MAINTAINER Scott Hansen <firecat4153@gmail.com>
 
 RUN apt-get -q update && apt-get install -qy --force-yes avahi-daemon avahi-utils
-ADD https://downloads.plex.tv/plex-media-server/0.9.11.7.803-87d0708/plexmediaserver_0.9.11.7.803-87d0708_amd64.deb /plexmediaserver.deb
-RUN dpkg -i /plexmediaserver.deb
-RUN rm /plexmediaserver.deb
+ADD https://downloads.plex.tv/plex-media-server/0.9.12.0.1071-7b11cfc/plexmediaserver_0.9.12.0.1071-7b11cfc_amd64.deb /plexmediaserver.deb
+RUN dpkg -i /plexmediaserver.deb && rm /plexmediaserver.deb
 
 # Fixes a problem where avahi won't start inside the container
 RUN sed -i "s/rlimit-nproc=3/#rlimit-nproc=3/" /etc/avahi/avahi-daemon.conf
